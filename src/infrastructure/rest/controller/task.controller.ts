@@ -17,19 +17,19 @@ import { TaskDto } from '../../../domain/repository/task/dto/task.dto';
 export class TaskController {
   constructor(
     @Inject(ProxyServicesDynamicModule.GET_ALL_TASK_DATA_PROXY_SERVICE)
-    private readonly getAllDummyDataProxyService: UseCaseProxy<GetAllTaskData>,
+    private readonly getAllTaskDataProxyService: UseCaseProxy<GetAllTaskData>,
     @Inject(ProxyServicesDynamicModule.CREATE_TASK_DATA_PROXY_SERVICE)
-    private readonly createDummyDataProxyService: UseCaseProxy<CreateTaskData>,
+    private readonly createTaskDataProxyService: UseCaseProxy<CreateTaskData>,
   ) {}
 
   @Get('/')
   async getAllTaskData(): Promise<TaskEntity[]> {
-    return this.getAllDummyDataProxyService.getInstance().execute();
+    return this.getAllTaskDataProxyService.getInstance().execute();
   }
 
   @Post('/')
   @UsePipes(ValidationPipe)
   async postTaskData(@Body() taskDto: TaskDto): Promise<TaskEntity> {
-    return this.createDummyDataProxyService.getInstance().execute(taskDto);
+    return this.createTaskDataProxyService.getInstance().execute(taskDto);
   }
 }

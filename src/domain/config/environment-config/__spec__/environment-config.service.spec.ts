@@ -55,7 +55,7 @@ describe('infrastructure/config/environment-config/EnvironmentConfigService', ()
         const result: EnvironmentConfigService = new EnvironmentConfigService();
 
         // then
-        expect(result.get('PORT')).toBe(3001);
+        expect(result.get('PORT')).toBe(8001);
       });
     });
 
@@ -68,26 +68,13 @@ describe('infrastructure/config/environment-config/EnvironmentConfigService', ()
         const result: EnvironmentConfigService = new EnvironmentConfigService();
 
         // then
-        expect(result.get('DATABASE_TYPE')).toBe('sqlite');
+        expect(result.get('DATABASE_TYPE')).toBe('mysql');
       });
     });
 
-    describe('DATABASE_NAME', () => {
-      it('should be defaulted to local-db.sqlite', () => {
-        // given
-        process.env.DATABASE_NAME = undefined;
-
-        // when
-        const result: EnvironmentConfigService = new EnvironmentConfigService();
-
-        // then
-        expect(result.get('DATABASE_NAME')).toBe('local-db.sqlite');
-      });
-    });
-
-    describe('when DATABASE_TYPE is postgres', () => {
+    describe('when DATABASE_TYPE is mysql', () => {
       beforeEach(() => {
-        process.env.DATABASE_TYPE = 'postgres';
+        process.env.DATABASE_TYPE = 'mysql';
       });
 
       describe('DATABASE_HOST', () => {

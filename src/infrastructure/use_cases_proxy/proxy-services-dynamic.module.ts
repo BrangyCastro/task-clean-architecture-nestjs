@@ -10,7 +10,7 @@ import { UseCaseProxy } from './use-case-proxy';
 })
 export class ProxyServicesDynamicModule {
   static GET_ALL_TASK_DATA_PROXY_SERVICE: string = 'GetAllTaskDataProxyService';
-  static CREATE_TASK_DATA_PROXY_SERVICE: string = 'CreateDummyDataProxyService';
+  static CREATE_TASK_DATA_PROXY_SERVICE: string = 'CreateTaskDataProxyService';
 
   static register(): DynamicModule {
     return {
